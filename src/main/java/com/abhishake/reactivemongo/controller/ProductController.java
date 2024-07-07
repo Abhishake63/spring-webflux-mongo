@@ -1,8 +1,8 @@
 package com.abhishake.reactivemongo.controller;
 
 import com.abhishake.reactivemongo.dto.ProductDto;
-import com.abhishake.reactivemongo.entity.Product;
 import com.abhishake.reactivemongo.service.ProductService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -43,6 +43,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> deleteProductById(@PathVariable String id) {
         return productService.deleteProduct(id);
     }
